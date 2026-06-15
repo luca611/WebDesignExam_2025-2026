@@ -1,0 +1,18 @@
+:root {
+    --accent-color: #FFC042;
+    --text-color: #474500;
+    --background-color: #FFF6E5;
+}
+
+@font-face {
+    font-family: ;
+    src: url();
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
