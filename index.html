@@ -9,9 +9,32 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <!-- Navbar -->
         <div class="topBar" id="navbar">
-            ciao
+            <div class="opzioni">
+                <a href="#">Home</a>
+                <a href="#">Prodotti</a>
+                <a href="#">Contatti</a>
+            </div>
+            <div id="menuIcon">
+                <img src="./resources/iconSet/menu.svg" alt="Menu" class="menuIcon barIcon">
+            </div>
+
+            <div>
+                <picture class="logo">
+                    <source 
+                        media="(max-width: 600px)"
+                        srcset="./resources/imgs/logo/shortLogo.png" alt="Melis">
+                    <img src="./resources/imgs/logo/fullLogo.png" alt="Melis" class="logo">
+                </picture>
+            </div>
+            
+            <div class="alignEnd">
+                <img src="resources/iconSet/shop.svg" alt="Negozio" class="barIcon">
+            </div>
         </div>
+        <!-- Contenuto Pagina -->
+        
         <script src="script.js"></script>
     </body>
 </html>
