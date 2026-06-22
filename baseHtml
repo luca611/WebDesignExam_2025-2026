@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <title>Melis</title>
+        <meta name="description" content="Melis è un e-shop di prodotti per la pelle a base di cera d'api: creme idratanti, balsami labbra, scrub e molto altro. I nostri prodotti sono formulati per nutrire e proteggere la pelle, lasciandola morbida, luminosa e sana. Scegli Melis per una skincare naturale e efficace!">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <!-- Navbar -->
+        <div class="topBar" id="navbar">
+            <div class="opzioni">
+                <a href="#">Home</a>
+                <a href="#">Prodotti</a>
+                <a href="#">Contatti</a>
+            </div>
+            <div id="menuIcon">
+                <img src="./resources/iconSet/menu.svg" alt="Menu" class="menuIcon barIcon">
+            </div>
+
+            <div>
+                <picture class="logo">
+                    <source 
+                        media="(max-width: 600px)"
+                        srcset="./resources/imgs/logo/shortLogo.png" alt="Melis">
+                    <img src="./resources/imgs/logo/fullLogo.png" alt="Melis" class="logo">
+                </picture>
+            </div>
+            
+            <div class="alignEnd">
+                <img src="resources/iconSet/shop.svg" alt="Negozio" class="barIcon">
+            </div>
+        </div>
+        <!-- Contenuto Pagina -->
+        
+        <script src="script.js"></script>
+    </body>
+</html>

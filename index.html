@@ -17,7 +17,7 @@
                 <a href="#">Contatti</a>
             </div>
             <div id="menuIcon">
-                <img src="./resources/iconSet/menu.svg" alt="Menu" class="menuIcon barIcon">
+                <img src="./resources/iconSet/menu.svg" alt="Menu" class="menuIcon icon">
             </div>
 
             <div>
@@ -30,11 +30,72 @@
             </div>
             
             <div class="alignEnd">
-                <img src="resources/iconSet/shop.svg" alt="Negozio" class="barIcon">
+                <img src="resources/iconSet/shop.svg" alt="Negozio" class="icon">
             </div>
         </div>
         <!-- Contenuto Pagina -->
-        
+        <!-- Hero Section -->
+        <div class="section pattern sectionPadding">
+            <div class="container">
+                <video autoplay muted loop class="video">
+                    <source src="./resources/video/hero.mp4" type="video/mp4">
+                </video>
+                <div class="videoOverlay">
+                    <h1 class ="mainTitle slideUpFade">Melis</h1>
+                    <p class="subtitle slideUpFade delay1"><i>La cosmesi al naturale</i></p>
+                    <button class="shopButton slideUpFade delay2">
+                        <img src="resources/iconSet/shop.svg" class="icon">
+                        <p>Acquista ora</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- nuova linea -->
+        <div class="customSection alignCenterText greenSection">
+            <div class="container alignCenter">
+                <h2 class="secondTitle whiteText">
+                    Vitalis
+                </h2>
+                <p class="subtitle secondSubtitle">
+                    Una nuova collezione per ridonare luce e vitalità alla tua pelle
+                </p>
+                <div class="containerCarosello">
+                    <div class="fadeLeft" id="fadeLeft"></div>
+                    <div class="fadeRight" id="fadeRight"></div>  
+                    <button id="previous" class="buttonCarosello leftButton"><</button>
+                    <button id="next" class="buttonCarosello rightButton">></button>
+                    <div class="carosello" id="carosello">
+                        <div class="card">
+                            <img src="./resources/imgs/products/prod1.png" alt="Product image">
+                            <div>
+                                <p class="quickDescription">
+                                    Burrocacao bio
+                                </p>
+                                <p class="productName">
+                                    Vitalis - Burrocacao Bio
+                                </p>
+                                <p class="productPrice">
+                                    10,50
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            
+                        </div>
+                        <div class="card">
+                            
+                        </div>
+                        <div class="card">
+                            
+                        </div>
+                        <div class="card">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script src="script.js"></script>
     </body>
 </html>
