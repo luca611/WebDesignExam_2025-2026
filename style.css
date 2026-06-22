@@ -1,6 +1,7 @@
 :root {
     --accent-color: #FFC042;
     --text-color: #474500;
+    --darker-text-color: #353300;
     --background-color: #FFF6E5;
 
     --gapCarosello: 1rem;
@@ -20,8 +21,7 @@ body {
     margin-top: 0;
     margin: 0 !important;
     padding: 0;
-    /* AGGIUNTA CLAUDE: altezza aumentata da 200vh per fare spazio
-       alla nuova .carouselSection (93vh) aggiunta in coda alla pagina */
+    min-width: 20rem;
     height: 293vh;
 }
 
@@ -109,9 +109,14 @@ utilità generali
     height: 2rem;
     background-image: url('./resources/patterns/separatoreV2.png');
     background-position: center;
-    background-size: 8rem;
+    background-size: 7rem;
     background-repeat: repeat-x;
     transition: 0.3s ease;
+}
+
+.darkerGreenSection{
+    background-color: var(--darker-text-color);
+    color: var(--background-color);
 }
 
 .sectionPadding{
@@ -121,6 +126,28 @@ utilità generali
 .whiteText{
     color: var(--background-color);
 }
+
+.toFade {
+    opacity: 0;
+}
+
+.underlined{
+    text-decoration: underline;
+}
+
+.underlined:hover{
+    filter: brightness(0.8);
+}
+
+.margin1{
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.maginBottom{
+    margin-bottom: 3rem;
+}
+
 /* -----------
 stili riguardanti la barra superiore 
 ----------- */
@@ -235,9 +262,17 @@ stili riguardanti il contenuto della pagina
 
 .secondTitle{
     font-size: 2rem;
-    margin-top: 3rem;
-    margin-bottom: 0;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
     font-weight:900;
+    font-family: 'Fiona',Arial, Helvetica, sans-serif;
+}
+
+.thirdTitle{
+    font-size: 1.5rem;
+    margin-top: 3rem;
+    margin-bottom: 0.5rem;
+    font-weight:600;
     font-family: 'Fiona',Arial, Helvetica, sans-serif;
 }
 
@@ -309,11 +344,11 @@ Carosello
 
 .containerCarosello{
     width: 100%;
-    margin-bottom: 2rem;
     display: flex;
     flex-direction: row;
     padding-left: 3rem;
     padding-right: 3rem;
+    min-width: 26rem;
 }
 
 .carosello{
@@ -326,6 +361,11 @@ Carosello
     transition: all .3 ease;
     border-radius: 1rem;
     position: relative;
+}
+
+.caroselloItemSingolo{
+    min-width: fit-content;
+    justify-content: center;
 }
 
 .card{
@@ -342,6 +382,7 @@ Carosello
 .card img{
     width: 100%;
     aspect-ratio: 1/1;
+    max-height: 23rem;
     object-fit: cover;
     border-radius: 1rem 1rem 0 0;
 }
@@ -414,8 +455,14 @@ Carosello
     transition: all .3s ease;
     border-radius: 100%;
     padding: auto;
-    top: 55%
+    top: 50%;
+    border: none;
+    background-color: var(--background-color);
+    font-weight: bold;
+}
 
+.buttonCarosello:hover{
+    background-color: var(--accent-color);
 }
 
 .leftButton{
@@ -428,6 +475,45 @@ Carosello
 
 .hideButton{
     scale: 0;
+}
+
+/* -----------
+Best sellers
+----------- */
+
+.esagonoContainer{
+    width: 33%;
+    max-width: 18rem;
+    min-width: 10rem;
+    aspect-ratio: 1/1;
+    background-image: url("./resources/imgs/decorazioni/hexDecorazione.png");
+    background-size: 100%;
+}
+
+.esagono {
+    width: 100%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+}
+
+.esagono img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.containerBestSellers{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 3rem;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 1rem;
+    row-gap: 0;
+    justify-content: center;
 }
 
 /* -----------
@@ -467,7 +553,7 @@ Animazioni
     }
 
     .card{
-        flex: 0 0 calc((100% - 2 * var(--gapCarosello)) / 3);
+        flex: 0 0 calc((100% - 1 * var(--gapCarosello)) / 2);
         min-width: 0;
         border-radius: 1.5rem;
     } 
@@ -486,7 +572,7 @@ Animazioni
         position: absolute;
         left: 5rem;
         height: 100%;
-        width: 3rem;
+        width: 1.5rem;
         background-image: linear-gradient(to left, transparent, var(--text-color));
     }   
 
@@ -495,17 +581,23 @@ Animazioni
         position: absolute;
         right: 5rem;
         height: 100%;
-        width: 3rem;
+        width: 1.5rem;
         background-image: linear-gradient(to right, transparent, var(--text-color));
     }
 
     .leftButton{
-    left: 2rem;
-}
+    left: 1rem;
+    }
 
-.rightButton{
-    right: 2rem;
-}
+    .rightButton{
+        right: 1rem;
+    }
+
+    .containerBestSellers{
+        padding-left: 3rem;
+        padding-right: 3rem;
+        gap: 0;
+    }
 }
 
 /*
