@@ -72,6 +72,7 @@ utilità generali
 
 .alignCenter {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -80,6 +81,10 @@ utilità generali
     display: flex;
     align-items: center;
     justify-content: flex-start;
+}
+
+.mobileAlignLeft{
+    text-align: left;
 }
 
 .alignEnd {
@@ -271,6 +276,10 @@ Animazioni
 @media (min-width: 768px) {
     .container{
         border-radius: 1rem;
+    }
+
+    .mobileAlignLeft{
+        text-align: inherit;
     }
 }
 

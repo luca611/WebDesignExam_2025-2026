@@ -3,6 +3,7 @@ const fadeLeft = ebi("fadeLeft");
 const fadeRight = ebi("fadeRight");
 const next = ebi("next");
 const previous = ebi("previous");
+const contenitore = ebi("containerRecensioni");
 
 let prodottiCarosello = 0;
 
@@ -21,7 +22,10 @@ function create(tipo){
 window.addEventListener("DOMContentLoaded", function() {
     caricaCarosello();
     prodottiCarosello = document.querySelectorAll(".card");
-    setFade()
+    setFade();
+    caricaArticoli();
+    generaRecensioni();
+    animate();
 });
 
 //effetto fade up per gli elementi
@@ -82,6 +86,131 @@ function caricaCarosello(){
         contenitoreCarosello.appendChild(card);
     });
 
+}
+
+function creaRecensione(recensione){
+
+    const recensioneDiv = create("div");
+    recensioneDiv.classList.add("recensione");
+
+    const info = create("div");
+    info.classList.add("infoRecensione");
+
+    const icona = create("div");
+    icona.classList.add("icona");
+    icona.textContent = recensione.nome.charAt(0);
+
+    const nomeUtente = create("div");
+    nomeUtente.classList.add("nomeUtente");
+
+    const nome = create("div");
+    nome.textContent = recensione.nome;
+
+    const stelle = create("div");
+    stelle.classList.add("contenitoreStelle");
+
+    for(let i = 0; i < 5; i++){
+
+        const s = create("span");
+        s.textContent = "★";
+
+        if(i < recensione.rating) s.classList.add("attiva");
+
+        stelle.append(s);
+    }
+
+    nomeUtente.append(nome, stelle);
+    info.append(icona, nomeUtente);
+
+    const desc = create("div");
+    desc.classList.add("corpoDescrizione");
+    desc.textContent = recensione.testo;
+
+    recensioneDiv.append(info, desc);
+
+    return recensioneDiv;
+}
+
+function generaRecensioni(){
+    contenitore.replaceChildren();
+    const root = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    const cardWidth = 20 * root;
+    const needed = Math.ceil(window.innerWidth / cardWidth) + 3; //posso calcolare quante me ne servono arrotondando avendo le grandezze
+
+    for(let i = 0; i < needed; i++){
+        const r = recensioni[i % recensioni.length]; //tramite il modulo mi assicuro di avere sempre valori compresi tra 0 e lenght-1 anche con ripetizione
+        contenitore.appendChild(creaRecensione(r));
+    }
+}
+
+let offset = 0;
+let speed = .5; 
+
+//funzione ricorsiva che continua a traslare a sinistra e sposta ogni volta il primo elemento in coda una volta che non è piu' visibile
+function animate(){
+    offset += speed;
+
+    contenitore.style.transform = `translateX(${-offset}px)`;
+    const first = contenitore.firstElementChild;
+    if(!first) return requestAnimationFrame(animate); //in caso non sia presente perchè non ancora generato anche se non dovrebbe capitare
+    const firstWidth = first.offsetWidth;
+    const gap = parseFloat(getComputedStyle(contenitore).gap) || 0;
+
+    if(offset >= firstWidth + gap){
+        offset -= firstWidth + gap;
+        contenitore.appendChild(first);
+    }
+
+    requestAnimationFrame(animate);
+}
+
+const observerRecensioni = new ResizeObserver(() => {
+    generaRecensioni();
+});
+
+//controlla quando ridimensiono la pagina
+observerRecensioni.observe(document.body);
+
+function caricaArticoli(){
+    const contenitoreArticoli = ebi("containerArticoli");
+    contenitoreArticoli.innerHTML="";
+
+    ultimi_articoli.forEach(articolo =>{
+        let divArticolo = create("div");
+        divArticolo.classList.add("articolo");
+
+        let imgArticolo = create("img");
+        imgArticolo.src = articolo.imgPath;
+
+        let divDati = create("div");
+        divDati.classList.add("datiArticolo");
+
+        let data = create("p");
+        data.classList.add("data")
+        data.innerText = articolo.data;
+
+        let titoloArticolo = create("p");
+        titoloArticolo.classList.add("titoloArticolo");
+        titoloArticolo.innerText = articolo.nome;
+
+        let estratto = create("p");
+        estratto.classList.add("descrizioneArticolo");
+        estratto.innerText = articolo.estratto;
+
+        /*let linkLettura = create("a");
+        linkLettura.classList.add("underlined");
+        linkLettura.innerText ="Continua a leggere..."*/
+
+        divDati.appendChild(data);
+        divDati.appendChild(titoloArticolo);
+        divDati.appendChild(estratto);
+        //divDati.appendChild(linkLettura);
+
+        divArticolo.appendChild(imgArticolo);
+        divArticolo.appendChild(divDati);
+
+        contenitoreArticoli.appendChild(divArticolo);
+    })
 }
 
 function setBorder(){
