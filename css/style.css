@@ -22,6 +22,7 @@ body {
     margin: 0 !important;
     padding: 0;
     min-width: 20rem;
+    min-height: 100vh;
 }
 
 .section {
@@ -135,6 +136,18 @@ utilità generali
     opacity: 0;
 }
 
+.slideUpFade{
+    opacity: 0;
+    animation: slideUpFade 1.2s ease forwards;
+}
+
+.delay1{
+    animation-delay: .1s;
+}
+.delay2{
+    animation-delay: .2s;
+}
+
 .underlined{
     text-decoration: underline;
 }
@@ -166,7 +179,7 @@ stili riguardanti la barra superiore
     height: 3rem;
     padding: 0.5em 1em;
     border-bottom: 1px solid transparent;   
-
+    width: 100%;
     position: sticky;
     top: 0;
 
@@ -240,15 +253,500 @@ l'utente va in 'hover' (ci passa sopra con il mouse) la linea si allunga fino a 
     height: 2rem;
 }
 
+/* -----------
+Stili Footer
+----------- */
 
+.footer{
+    width: 100%;
+    border-top: .1rem solid var(--text-color);
+}
+.fold{
+    width: 100%;
+    border-bottom:.1rem solid var(--text-color);
+    margin-top: 1rem;
+    padding-bottom: .2rem;
+    height: fit-content;
+}
+
+.containerTitoloFold{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    cursor:pointer;
+}
+
+.titolo{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:1.5rem;
+    font-weight: lighter;
+    margin:0;
+}
+
+.pusanteFold{
+    width:2rem;
+    height:2rem;
+    border-radius:50rem;
+    border:.1rem solid var(--text-color);
+    background:none;
+    color:var(--text-color);
+    font-size:1rem;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    transition: all .3s ease;
+}
+
+.contenutoFold{
+    max-height:0;
+    overflow:hidden;
+    transition:all .3s ease;
+}
+
+.contenutoFold a{
+    display:block;
+    color:var(--text-color);
+    margin:0.5rem 0;
+    text-decoration:underline;
+}
+
+.contenutoFold p{
+    margin: 0.5rem 0;
+}
+
+.fold.open .contenutoFold{
+    max-height:20rem;
+    overflow: scroll;
+}
+
+.fold.open .pusanteFold{
+    transform:rotate(180deg);
+}
+
+.contanitoreFolds{
+    padding-left: 3rem;
+    padding-right: 3rem;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: .5rem;
+}
+
+.containerSocial{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.containerSocial img{
+    width: 2rem;
+    aspect-ratio: 1/1;
+}
+
+.containerSocial:hover {
+    filter: brightness(.6rem);
+}
+
+.miniText{
+    font-size: .7rem;
+    padding-bottom: 2rem;
+}
+
+.shopBar{
+    width: 100%;
+    position: fixed;
+    right: -100vw;
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    top:0;
+    transition: width .5s ease, right .5s ease, visibility 1s ease, box-shadow .5s ease;
+    z-index: 102;
+    padding: 1.5rem;
+    visibility: hidden;
+    box-shadow: 0 0 0 0 var(--text-color);
+}
+
+.shopBar.active{
+    visibility: visible;
+    right: 0;
+    box-shadow: -4rem 0 0 4rem var(--text-color);
+}
+
+.mobileNavHeader div{
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    align-items: center;
+}
+
+.sfondoNeroShop{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.267);
+    z-index: 101;
+    position: fixed;
+    top: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+.sfondoNeroShop.active{
+    visibility: visible;
+    opacity: 1;
+}
+
+.sfondoNero{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.267);
+    z-index: 101;
+    position: fixed;
+    top: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+.sfondoNero.active{
+    visibility: visible;
+    opacity: 1;
+}
+
+.mobileDevicesBar{
+    width: 100%;
+    position: fixed;
+    left: -100vw;
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    top:0;
+    transition: left .5s ease, visibility 1s ease, box-shadow .5s ease;
+    z-index: 102;
+    padding: 1.5rem;
+    visibility: hidden;
+    box-shadow: 0 0 0 0 var(--text-color);
+}
+
+.mobileDevicesBar.active{
+    visibility: visible;
+    left: 0;
+    box-shadow: 4rem 0 0 0 var(--text-color);
+}
+
+.mobileDevicesBar a{
+    margin-top: .5rem;
+    margin-bottom: .3rem;
+    font-size: 2rem;
+    position: relative;
+    width: fit-content;
+    text-decoration: none;
+    color: var(--text-color);
+    padding-bottom: .2rem;
+    opacity: 0;
+    transition: font-size .3s ease;
+}
+
+.containerLink.active a{
+    animation: fadeLeft 1s ease forwards;
+}
+
+.containerLink.active  > *:nth-child(1) { animation-delay: .1s; }
+.containerLink.active  > *:nth-child(2) { animation-delay: .3s; }
+.containerLink.active  > *:nth-child(3) { animation-delay: .5s; }
+.containerLink.active  > *:nth-child(4) { animation-delay: .7s; }
+.containerLink.active  > *:nth-child(5) { animation-delay: .9s; }
+
+.mobileDevicesBar a::before{
+    content: "";
+    position: absolute;
+    left: auto;
+    right: 0;
+    bottom: 0;
+    background-color: var(--text-color);
+    height: .2rem;
+    width: 0%;
+    transition: all .3s ease;
+}
+
+.mobileDevicesBar a:hover::before{
+    width: 100%;
+    right: auto;
+    left: 0;
+}
+
+.mobileNavHeader{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: .1rem solid var(--text-color);
+}
+
+.mobileNavHeader img{
+    height: 2.5rem;
+}
+
+.mobileNavHeader button{
+    background-color: transparent;
+    border: solid .1rem var(--text-color);
+    border-radius: 50rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    height: 3rem;
+    width: 3rem;
+    display: flex;
+    align-items: center;
+    font-weight: lighter;
+    justify-content: center;
+    color: var(--text-color);
+    transition: all .4s ease;
+    rotate: 45deg;
+}
+
+.mobileNavHeader button:hover{
+    rotate: calc(45deg * 3);
+    font-size: 2rem;
+}
+
+.coda{
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 4rem);
+    left: 0;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    display: flex;
+    justify-content: center;
+    border-top: .1rem var(--text-color) solid;
+}
+
+.containerLink{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    height: 85%;
+}
+
+.productPreview{
+    position: relative;
+    max-height: 90vh;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    display: none;
+}
+
+.productPreview.active{
+    display: block;
+}
+
+.productPreview img{
+    object-fit: cover;
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 1rem;
+}
+
+.prodDescription{
+    border-top: var(--text-color) solid .1rem;
+    border-bottom: .1rem var(--text-color) solid;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 0;
+}
+
+.ingChiave{
+    font-weight: bold;
+    margin: 0;
+    margin-top: 1rem;
+}
+
+.listaIngredienti{
+    margin-top: .5rem;
+}
+
+.buyProduct{
+    width: 100%;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border-radius: 50rem;
+    border: none;
+    min-height: 3rem;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.buyProduct::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 3rem;
+    background-color: var(--text-color);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.buyProduct p{
+    margin: 0;
+}
+
+.buyProduct:active{
+    animation: shopPop .2s ease;
+}
+
+.buyProduct:hover::before {
+    transform: translateX(0);
+}
+
+.buyProduct:hover p {
+    filter: brightness(9) hue-rotate(20deg);
+}
+
+.carrello{
+    position: relative;
+    max-height: 90vh;
+    height: 90vh;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    display: none;
+    gap: 1rem;
+}
+
+.carrello.active{
+    display: flex;
+}
+.wrapperCarrello{
+    display: flex;
+    border: solid var(--text-color) .1rem;
+}
+
+.carrello div{
+    display: flex;
+    background-color: white;
+    color: var(--text-color);
+    width: 100%;
+    border-radius: 1rem;
+    gap: 1rem;
+    font-size: 1rem;
+    flex-direction: column;
+    align-items: center;
+    transition: font-size .3s ease;
+}
+
+
+.imgProductCarrello{
+    width: 100%;
+    transform: all .3s ease;
+    object-fit: cover;
+    border-radius: 1rem 1rem 0 0;
+    height: 100%;
+}
+
+.descrizioneProdotti{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    gap: 0.5rem !important;
+    align-items: start;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    height: fit-content !important;
+    align-items: flex-start !important;
+    background: transparent !important;
+}
+
+.descrizioneProdotti p{
+    margin: 0;
+}
+
+.quantitaProd{
+    font-size: .8rem;
+    opacity: .8;
+    align-self: normal;
+}
+
+.rimuoviProd{
+    width: 3rem;
+    aspect-ratio: 1/1;
+    font-size: 1rem;
+    background-color: transparent;
+    border: .1rem var(--text-color) solid;
+    border-radius: 50rem;
+    display: flex;    
+    align-items: center;
+    justify-content: center;
+}
+
+.btnContainer{
+    display: flex;
+    flex-direction: row !important;
+    width: fit-content !important;
+    padding-bottom: 1rem;
+    height: fit-content !important;
+}
+
+.placeholderDiv{
+    background-color: transparent !important;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text-color);
+}
 
 /* -----------
 Animazioni
 ----------- */
+
+@keyframes shopPop{
+    0% {
+        rotate: 0;
+    }
+
+    50%{
+        rotate: .5deg;
+    }
+
+    100%{
+        rotate: 0;
+    }
+}
+
 @keyframes slideUpFade {
     from {
         opacity: 0;
         transform: translateY(1rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeLeft {
+    from {
+        opacity: 0;
+        transform: translatex(-1rem);
     }
     to {
         opacity: 1;
@@ -274,12 +772,63 @@ Animazioni
     Dispoditivi tablet
 */
 @media (min-width: 768px) {
+    
+    .btnContainer{
+        margin-left: 0;
+        padding-bottom: 0;
+    }
+
+    .carrello div{
+        height: 10rem;
+        padding-right: 1rem;
+    }
+
+    .wrapperCarrello{
+        display: flex;
+        flex-direction: row !important;
+    }
+
+    .imgProductCarrello{
+        width: 45%;
+        transform: all .3s ease;
+        object-fit: cover;
+        border-radius: 1rem 0 0 1rem;
+        height: 100%;
+    }
+
+    .carrello div{
+        font-size: 1.25rem;
+    }
+
     .container{
         border-radius: 1rem;
     }
 
     .mobileAlignLeft{
         text-align: inherit;
+    }
+    
+    .mobileDevicesBar{
+        width: 70%;
+    }
+
+    .mobileDevicesBar a{
+        font-size: 4rem;
+    }
+    
+    .shopBar{
+        width: 70%;
+    }
+    .descrizioneProdotti{
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        padding-left: 0;
+        padding-right: 0;
+        flex-wrap: nowrap;
+        flex: 1 1 auto;
+        width: 100%;
+        height: 100%;
+        
     }
 }
 
@@ -288,6 +837,10 @@ Animazioni
 */
 @media (min-width: 1024px) {
 
+    .contanitoreFolds{
+        flex-direction: row;
+        gap: 1rem;
+    }
     .menuIcon {
         display: none;
     }
@@ -297,6 +850,14 @@ Animazioni
         gap: 1rem;
     }
 
+    .mobileDevicesBar.active{
+        display: none;
+    }
+
+    .sfondoNero.active{
+        display: none;
+    }
+
     /* la sintassi '> *' significa che lo stile viene applicato a tutti i figli diretti di .opzioni */
     .opzioni > * { 
         opacity: 0;
@@ -304,11 +865,17 @@ Animazioni
         animation: slideUpFade .4s ease forwards;
     }
 
+    .shopBar{
+        width: 50%;
+        max-width: 40rem;
+    }
+
     /* va a rallentare per singolo figlio l'animazione per un effetto di cascata */
     .opzioni > *:nth-child(1) { animation-delay: .1s; }
     .opzioni > *:nth-child(2) { animation-delay: .2s; }
     .opzioni > *:nth-child(3) { animation-delay: .3s; }
     .opzioni > *:nth-child(4) { animation-delay: .4s; }
+    .opzioni > *:nth-child(5) { animation-delay: .5s; }
 
     .topBar{
         grid-template-columns: 1fr auto auto 1fr;

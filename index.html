@@ -13,12 +13,13 @@
         <!-- Navbar -->
         <div class="topBar" id="navbar">
             <div class="opzioni">
-                <a href="#">Home</a>
-                <a href="#">Prodotti</a>
-                <a href="#">Contatti</a>
+                <a href="./shop.html">Shop</a>
+                <a href="./shop.html">About us</a>
+                <a href="./shop.html">Blog</a>
+                <a href="./recensioni.html">Recensioni</a>
             </div>
-            <div id="menuIcon">
-                <img src="./resources/iconSet/menu.svg" alt="Menu" class="menuIcon icon">
+            <div id="menuIcon" id="menuIcon">
+                <img src="./resources/iconSet/menu.svg" alt="Menu" class="menuIcon icon" >
             </div>
 
             <div>
@@ -31,7 +32,54 @@
             </div>
             
             <div class="alignEnd">
-                <img src="resources/iconSet/shop.svg" alt="Negozio" class="icon">
+                <img src="resources/iconSet/shop.svg" alt="Negozio" class="icon" id="apriCarrello">
+            </div>
+        </div>
+
+        <div class="sfondoNero" id="sfondoNero"></div>
+        <div class="mobileDevicesBar" id="mobileNav">
+            <div class="mobileNavHeader">
+                <img src="./resources/imgs/logo/fullLogo.png">
+                <button id="navCLose">+</button>
+            </div>
+            <div class="containerLink" id="links"> 
+                <a href="./shop.html">
+                Prodotti
+                </a>
+                <a href="#">
+                    La nostra storia
+                </a>
+                <a href="#">
+                    Blog dell'alveare
+                </a>
+                <a href="./recensioni.html">
+                    Recensioni
+                </a>
+            </div>
+            <div class="coda">
+                @ 2026 Melis
+            </div>
+        </div>
+
+        <!-- ShopBar -->
+        <div class="sfondoNeroShop" id="sfondoNeroShop"></div>
+        <div class="shopBar" id="shopBar">
+            <div class="mobileNavHeader">
+                <div id="headerBar">
+                    Nome prodotto
+                </div>
+                <button id="shopClose" onclick="closeShop()">+</button>
+            </div>
+            <div class="productPreview" id="productPreview">
+                <img src="./resources/imgs/generali/Apicoltore.jpg" class="productImagePreview" id="previewImage">
+                <p class="prodDescription" id="prodDesc">Protezione e comfort in un gesto semplice. Uno stick pratico e naturale che aiuta a mantenere le labbra morbide e protette dagli agenti esterni.</p>
+                <p class="ingChiave">Ingredienti chiave</p>
+                <ul class="listaIngredienti" id="listaIng">
+                </ul>
+                <button class="buyProduct" id="pulsanteAcquista"><p>Acquista</p></button>
+            </div>
+            <div class="carrello" id="carrello">
+
             </div>
         </div>
         <!-- Contenuto Pagina -->
@@ -178,9 +226,84 @@
                 </div>
             </div>
         </div>
+
+        <div class="footer">
+            <div class="contanitoreFolds">
+                <div class="fold toFade">
+                    <div class="containerTitoloFold">
+                        <h1 class="titolo">
+                            Community
+                        </h1>
+                        <button class="pusanteFold">
+                            +
+                        </button>
+                    </div>
+
+                    <div class="contenutoFold">
+                        <a href="./recensioni.html">
+                            Risultati concreti
+                        </a>
+                        <a href="#">
+                            Consigli dall’alveare
+                        </a>
+                    </div>
+                </div>
+                <div class="fold toFade delay1">
+                    <div class="containerTitoloFold">
+                        <h1 class="titolo">
+                            Contatti
+                        </h1>
+                        <button class="pusanteFold">
+                            +
+                        </button>
+                    </div>
+
+                    <div class="contenutoFold">
+                        <p>
+                            Via delle api, 6 20345
+                        </p>
+                        <p>
+                            Mielandia (ML)
+                        </p>
+                    </div>
+                </div>
+                <div class="fold toFade delay2">
+                    <div class="containerTitoloFold">
+                        <h1 class="titolo">
+                            Credits
+                        </h1>
+                        <button class="pusanteFold">
+                            +
+                        </button>
+                    </div>
+
+                    <div class="contenutoFold">
+                        <a href="./credits.html">
+                            Risorse utilizzare
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="containerSocial toFade">
+                <a href="https://www.facebook.com" target="_blank">
+                    <img src="./resources/iconSet/Facebook.svg">
+                </a>
+                <a href="https://www.instagram.com" target="_blank">
+                    <img src="./resources/iconSet/Instagram.svg">
+                </a>
+                <a href="https://www.linkedin.com" target="_blank">
+                    <img src="./resources/iconSet/Linkedin.svg">
+                </a>
+            </div>
+            <div class="alignCenterText toFade miniText">
+                @ 2026 Melis
+            </div>
+        </div>
         <script src="./data/recensioni.js"></script>
         <script src="./data/ultimiArticoli.js"></script>
         <script src="./data/carosello.js"></script>
-        <script src="script.js"></script>
+        <script src="./data/prodotti.js"></script>
+        <script src="./script.js"></script>
+        <script src="./homeScript.js"></script>
     </body>
 </html>

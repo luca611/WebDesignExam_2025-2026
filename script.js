@@ -1,31 +1,28 @@
-const carosello = ebi("carosello");
-const fadeLeft = ebi("fadeLeft");
-const fadeRight = ebi("fadeRight");
-const next = ebi("next");
-const previous = ebi("previous");
-const contenitore = ebi("containerRecensioni");
-
-let prodottiCarosello = 0;
-
-next.addEventListener("click", avanti);
-previous.addEventListener("click" ,indietro);
+// ebi e create sono delle abbreviazioni per comodità di document.getElementById e document.createElement in quanto le uso spesso  
 
 function ebi(id){
     return document.getElementById(id);
 }
 
-function create(tipo){
-    return document.createElement(tipo);
+function create(elemento){
+    return document.createElement(elemento);
 }
 
-//funzioni eseguite al caricamento della pagina home
-window.addEventListener("DOMContentLoaded", function() {
-    caricaCarosello();
-    prodottiCarosello = document.querySelectorAll(".card");
-    setFade();
-    caricaArticoli();
-    generaRecensioni();
-    animate();
+//apertura elementi foldable del footer
+const sezioni = document.querySelectorAll(".fold");
+
+sezioni.forEach(sezione => {
+    const header = sezione.querySelector(".containerTitoloFold");
+    const bottone = sezione.querySelector(".pusanteFold");
+
+    header.addEventListener("click",()=>{
+        sezione.classList.toggle("open");
+        if(sezione.classList.contains("open")){
+            bottone.textContent = "−";
+        }else{
+            bottone.textContent = "+";
+        }
+    });
 });
 
 //effetto fade up per gli elementi
@@ -49,170 +46,8 @@ window.addEventListener("DOMContentLoaded", function() {
 });
 
 window.addEventListener("scroll", setBorder);
-carosello.addEventListener("scroll", setFade)
 
-function caricaCarosello(){
-    const contenitoreCarosello= ebi("carosello");
-    contenitoreCarosello.innerHTML=""; //anche se non c'è niente mi assicuro sia vuoto
-
-    prodotti_Carosello.forEach(prodotto => {
-        let card = create("div")
-        card.classList.add("card");
-
-        let prodImg = create("img");
-        prodImg.src = prodotto.imgPath;
-
-        let containerDescrizione = create("div");
-
-        let tipologia = create("p");
-        tipologia.innerText = prodotto.tipologia;
-        tipologia.classList.add("quickDescription");
-
-        let nomeProd = create("p");
-        nomeProd.innerText = prodotto.nome; 
-        nomeProd.classList.add("productName");
-
-        let prezzo = create("p");
-        prezzo.innerText = prodotto.prezzo;
-        prezzo.classList.add("productPrice");
-
-        containerDescrizione.appendChild(tipologia);
-        containerDescrizione.appendChild(nomeProd);
-        containerDescrizione.appendChild(prezzo);
-
-        card.appendChild(prodImg);
-        card.appendChild(containerDescrizione);
-
-        contenitoreCarosello.appendChild(card);
-    });
-
-}
-
-function creaRecensione(recensione){
-
-    const recensioneDiv = create("div");
-    recensioneDiv.classList.add("recensione");
-
-    const info = create("div");
-    info.classList.add("infoRecensione");
-
-    const icona = create("div");
-    icona.classList.add("icona");
-    icona.textContent = recensione.nome.charAt(0);
-
-    const nomeUtente = create("div");
-    nomeUtente.classList.add("nomeUtente");
-
-    const nome = create("div");
-    nome.textContent = recensione.nome;
-
-    const stelle = create("div");
-    stelle.classList.add("contenitoreStelle");
-
-    for(let i = 0; i < 5; i++){
-
-        const s = create("span");
-        s.textContent = "★";
-
-        if(i < recensione.rating) s.classList.add("attiva");
-
-        stelle.append(s);
-    }
-
-    nomeUtente.append(nome, stelle);
-    info.append(icona, nomeUtente);
-
-    const desc = create("div");
-    desc.classList.add("corpoDescrizione");
-    desc.textContent = recensione.testo;
-
-    recensioneDiv.append(info, desc);
-
-    return recensioneDiv;
-}
-
-function generaRecensioni(){
-    contenitore.replaceChildren();
-    const root = parseFloat(getComputedStyle(document.documentElement).fontSize);
-    const cardWidth = 20 * root;
-    const needed = Math.ceil(window.innerWidth / cardWidth) + 3; //posso calcolare quante me ne servono arrotondando avendo le grandezze
-
-    for(let i = 0; i < needed; i++){
-        const r = recensioni[i % recensioni.length]; //tramite il modulo mi assicuro di avere sempre valori compresi tra 0 e lenght-1 anche con ripetizione
-        contenitore.appendChild(creaRecensione(r));
-    }
-}
-
-let offset = 0;
-let speed = .5; 
-
-//funzione ricorsiva che continua a traslare a sinistra e sposta ogni volta il primo elemento in coda una volta che non è piu' visibile
-function animate(){
-    offset += speed;
-
-    contenitore.style.transform = `translateX(${-offset}px)`;
-    const first = contenitore.firstElementChild;
-    if(!first) return requestAnimationFrame(animate); //in caso non sia presente perchè non ancora generato anche se non dovrebbe capitare
-    const firstWidth = first.offsetWidth;
-    const gap = parseFloat(getComputedStyle(contenitore).gap) || 0;
-
-    if(offset >= firstWidth + gap){
-        offset -= firstWidth + gap;
-        contenitore.appendChild(first);
-    }
-
-    requestAnimationFrame(animate);
-}
-
-const observerRecensioni = new ResizeObserver(() => {
-    generaRecensioni();
-});
-
-//controlla quando ridimensiono la pagina
-observerRecensioni.observe(document.body);
-
-function caricaArticoli(){
-    const contenitoreArticoli = ebi("containerArticoli");
-    contenitoreArticoli.innerHTML="";
-
-    ultimi_articoli.forEach(articolo =>{
-        let divArticolo = create("div");
-        divArticolo.classList.add("articolo");
-
-        let imgArticolo = create("img");
-        imgArticolo.src = articolo.imgPath;
-
-        let divDati = create("div");
-        divDati.classList.add("datiArticolo");
-
-        let data = create("p");
-        data.classList.add("data")
-        data.innerText = articolo.data;
-
-        let titoloArticolo = create("p");
-        titoloArticolo.classList.add("titoloArticolo");
-        titoloArticolo.innerText = articolo.nome;
-
-        let estratto = create("p");
-        estratto.classList.add("descrizioneArticolo");
-        estratto.innerText = articolo.estratto;
-
-        /*let linkLettura = create("a");
-        linkLettura.classList.add("underlined");
-        linkLettura.innerText ="Continua a leggere..."*/
-
-        divDati.appendChild(data);
-        divDati.appendChild(titoloArticolo);
-        divDati.appendChild(estratto);
-        //divDati.appendChild(linkLettura);
-
-        divArticolo.appendChild(imgArticolo);
-        divArticolo.appendChild(divDati);
-
-        contenitoreArticoli.appendChild(divArticolo);
-    })
-}
-
+//applica il bordo alla navbar
 function setBorder(){
     const navbar = ebi("navbar");
     if (window.scrollY > 0) {
@@ -223,55 +58,194 @@ function setBorder(){
     }
 }
 
-function setFade(){
-    let sensibilita = 10;
-    let posizione = carosello.scrollLeft; //arrotondo per evitare situazioni in cui lo scrollo "smooth" si ferma prima del vero massimo
-    let massimo = carosello.scrollWidth - carosello.clientWidth - sensibilita; //Scroll massimo del mio carosello - porzione visibile del carosello -> valore massimo di scroll
-    let minimo = 0 + sensibilita;
+const pulsanteNavBar = ebi("menuIcon");
+const pulsanteChiusuraNav = ebi("navCLose");
 
-    if(prodotti_Carosello.length == 1){
-        fadeLeft.classList.add("fadeHidden");
-        previous.classList.add("hideButton");
-        fadeRight.classList.add("fadeHidden");
-        next.classList.add("hideButton");
-        return;
+pulsanteNavBar.addEventListener("click", apriNav);
+pulsanteChiusuraNav.addEventListener("click", chiudiNav);
+
+function apriNav(){
+    ebi("sfondoNero").classList.add("active");
+    ebi("mobileNav").classList.add("active");
+    ebi("links").classList.add("active");
+}
+
+function chiudiNav(){
+    ebi("sfondoNero").classList.remove("active");
+    ebi("mobileNav").classList.remove("active");
+    ebi("links").classList.remove("active");
+}
+
+const shopCloseBtn = ebi("shopClose");
+shopCloseBtn.addEventListener("click", closeShop);
+
+function closeShop(){
+    ebi("carrello").classList.remove("active");
+    ebi("productPreview").classList.remove("active");
+    ebi("sfondoNeroShop").classList.remove("active");
+    ebi("shopBar").classList.remove("active")
+}
+function apriShop(){
+    ebi("sfondoNeroShop").classList.add("active");
+    ebi("shopBar").classList.add("active")
+}
+
+function preview(id){
+    if(!prodotti[id]) return;
+    ebi("carrello").classList.remove("active");
+    ebi("productPreview").classList.add("active");
+    ebi("headerBar").innerText= prodotti[id].nome;
+    ebi("previewImage").src = prodotti[id].imgPath;
+    ebi("prodDesc").innerText = prodotti[id].desc;
+    ebi("listaIng").innerHTML= "";
+    prodotti[id].ingredienti.forEach(ingrediente =>{
+        let elementoLista = create("li"); 
+        elementoLista.innerText = ingrediente
+        ebi("listaIng").appendChild(elementoLista);
+    })
+
+    ebi("pulsanteAcquista").onclick = function() {
+        acquista(id, 1);
+    }
+    apriShop()
+}
+
+function acquista(id, animazione = 0){
+    ebi("headerBar").innerText= "Carrello";
+    let carrello = JSON.parse(localStorage.getItem('carrello')) || [];;
+    const container = ebi("carrello");
+    let giaNelCarrello;
+
+    if (id == -1){
+        
+    }else{
+        giaNelCarrello = carrello.find(item => item.id === id);
+        if(giaNelCarrello){
+            giaNelCarrello.quantita += 1;
+        } else {
+            carrello.push({id: id, quantita: 1});
+        }
+        localStorage.setItem("carrello", JSON.stringify(carrello));
     }
 
-    fadeLeft.classList.remove("fadeHidden");
-    fadeRight.classList.remove("fadeHidden");
-    next.classList.remove("hideButton");
-    previous.classList.remove("hideButton");
+    renderCarrello(animazione);
+    ebi("carrello").classList.add("active");
+    ebi("productPreview").classList.remove("active");
+    apriShop();
+}
 
-    //console.log("posizione: " +posizione+ " massimo: "+ massimo)
-    if (posizione >= massimo){
-        fadeRight.classList.add("fadeHidden");
-        next.classList.add("hideButton");
+function rimuoviProd(id){
+    let carrello = JSON.parse(localStorage.getItem('carrello')) || [];
+    const index = carrello.findIndex(item => item.id === id);
+    if (index === -1) return;
+
+    if (carrello[index].quantita <= 1) {
+        carrello.splice(index, 1);
+    } else {
+        carrello[index].quantita -= 1;
     }
-    else if (posizione <= minimo){
-        fadeLeft.classList.add("fadeHidden");
-        previous.classList.add("hideButton");
+
+    localStorage.setItem('carrello', JSON.stringify(carrello));
+
+    renderCarrello();
+}
+
+function renderCarrello(animation = 0){
+    ebi("headerBar").innerText= "Carrello";
+    let carrello = JSON.parse(localStorage.getItem('carrello')) || [];;
+    const container = ebi("carrello");
+
+    if(container){
+        container.innerHTML = "";
+        let delay = 0;
+
+        if (carrello.length === 0) {
+            const divPlaceholder = create("div");
+            divPlaceholder.classList.add("placeholderDiv")
+
+            const imgVuota = create("img");
+            imgVuota.classList.add("emptyCartImg");
+            imgVuota.src = "./resources/iconSet/emptyCart.svg";
+
+            const emptyText = create("p");
+            emptyText.classList.add("emptyCartText");
+            emptyText.innerText = "Il carrello è vuoto.";
+
+            divPlaceholder.appendChild(imgVuota);
+            divPlaceholder.appendChild(emptyText);
+
+            container.appendChild(divPlaceholder);
+            return;
+        }
+
+        carrello.forEach(item => {
+            const prod = prodotti[item.id];
+            if(!prod) return;
+
+            let contenitore = create("div");
+            contenitore.classList.add("wrapperCarrello");
+
+            if (animation == 1) {
+                contenitore.classList.add("slideUpFade");
+                contenitore.style.animationDelay = delay + "s";
+                delay += 0.2;
+            }
+
+            let img = create("img");
+            img.classList.add("imgProductCarrello");
+            img.src = prod.imgPath;
+            img.alt = prod.nome;
+
+            let text = create("div");
+            text.classList.add("descrizioneProdotti");
+            
+            let nomeProd = create("p");
+            nomeProd.innerText = prod.nome;
+
+            text.appendChild(nomeProd);
+
+            let quantitaProdotto = create("p");
+            quantitaProdotto.classList.add("quantitaProd");
+            quantitaProdotto.innerText= "Nel carrello: " + item.quantita;
+
+            text.appendChild(quantitaProdotto);
+
+            let addProdBtn = create("button");
+            addProdBtn.classList.add("rimuoviProd");
+            addProdBtn.textContent = "+";
+            addProdBtn.onclick = function() {
+                acquista(item.id);
+            }
+
+            let rimuoviProdBtn = create("button");
+            rimuoviProdBtn.classList.add("rimuoviProd");
+            rimuoviProdBtn.textContent = "-";
+            rimuoviProdBtn.onclick = function() {
+                rimuoviProd(item.id);
+            }
+
+            let div = create("div");
+            div.classList.add("btnContainer");
+            div.appendChild(addProdBtn);
+            div.appendChild(rimuoviProdBtn);
+
+            contenitore.appendChild(img);
+            contenitore.appendChild(text);
+            contenitore.appendChild(div);
+            container.appendChild(contenitore);
+            
+    }); 
     }
 }
 
-let index = 0;
+const pulsanteAperturaCarrello = ebi("apriCarrello");
+pulsanteAperturaCarrello.addEventListener("click", apriCarrelloAnimato);
 
-function avanti() {
-    let max = prodottiCarosello.length - 1;
-    if(index < max) index += 1; 
-    //console.log(index);
-    carosello.scrollTo({
-        left: prodottiCarosello[index].offsetLeft,
-        behavior: "smooth"
-    });
+
+function apriCarrelloAnimato(){
+    console.log("apro")
+    renderCarrello(1);
+    ebi("carrello").classList.add("active");
+    ebi("productPreview").classList.remove("active");
+    apriShop();
 }
-
-function indietro() {
-    let min = 0;
-    if(index > 0) index -= 1; 
-    //console.log(index);
-    carosello.scrollTo({
-        left: prodottiCarosello[index].offsetLeft,
-        behavior: "smooth"
-    });
-}
-

@@ -1,0 +1,134 @@
+/* -----------------
+Stile pagina credits 
+-------------------*/
+
+.credits {
+    max-width: 95rem;
+    margin-bottom: 5rem;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin: 2rem;
+    flex-direction: column;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    transition: margin .3s ease;
+}
+
+.credits-card {
+    width: 100%;
+    padding: 2rem;
+    background-color: var(--background-color);
+    border: 1px solid var(--text-color);
+    border-radius: 1rem;
+}
+
+.credits h1 {
+    font-family: 'Fiona', Arial, Helvetica, sans-serif;
+    text-align: justify;
+    padding: 0;
+    margin-bottom: 0;
+    margin-top: 0%;
+}
+
+.credits h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    text-align: justify;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.credit-section {
+    padding-top: .2rem;
+    padding-bottom: .2rem;
+}
+
+.credit-section h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: justify;
+}
+
+.credit-section p {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+
+.credit-section ul {
+    padding-left: 2.5em;
+    list-style:none;
+}
+
+li::before {
+    content: "✦";
+    margin-right: 1em;
+    color: var(--text-color);
+}
+
+.credits-photo {
+    width: 100%;
+    height: 30rem;
+}
+
+.credits-photo img {
+    object-fit: cover;
+    border-radius: 1rem;
+    width: 100%;
+    height: 100%;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: calc(100vw - 4rem);
+    max-width: 95rem;
+    margin: 0rem auto;
+    padding-top: 2rem;
+}
+
+.line {
+    flex: 1;
+    height: 1px;
+    background-color: var(--text-color);
+}
+
+.ornament {
+    width: 3em;
+    height: auto;
+    display: block;
+}
+
+/* Smartphone */
+@media (min-width: 768px) {
+    .credits {
+        margin-left: 3rem;
+        margin-right: 3rem;
+    }
+    
+    .divider {
+        width: calc(100vw - 6rem);
+    }
+}
+
+/* Tablet */
+@media (min-width: 1024px) {
+    .credits{
+        flex-direction: row;
+        gap: 2rem;
+        align-items: stretch;
+    }
+
+    .credits-photo {
+        width: calc(50% - 1rem);
+        height: auto;
+    }
+
+    .credits-card{
+        height: auto;
+        width: calc(50% - 1rem);
+    }
+}
+

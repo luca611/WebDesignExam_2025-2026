@@ -94,18 +94,6 @@ stili riguardanti il contenuto della pagina
     filter: brightness(9) hue-rotate(20deg);
 }
 
-.slideUpFade{
-    opacity: 0;
-    animation: slideUpFade 1.2s ease forwards;
-}
-
-.delay1{
-    animation-delay: .1s;
-}
-.delay2{
-    animation-delay: .2s;
-}
-
 .flexColumn{
     flex-direction: column;
 }
@@ -308,8 +296,8 @@ La storia
     color: var(--text-color);
     display: flex;
     flex-direction: column-reverse;
-    margin-left: 3rem;
-    margin-right: 3rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
     background-color: var(--background-color);
     margin-top: 1.5rem;
     margin-bottom: 3rem;
@@ -375,6 +363,8 @@ Articoli
 ----------- */
 
 .flexArticoli{
+    padding-left: 2rem;
+    padding-right: 2rem;
     min-height: 0 !important;
     max-height: none !important;
     height: auto !important;
@@ -382,8 +372,6 @@ Articoli
     flex-direction: initial !important;
     gap:1rem;
     width: 100%;
-    padding-left: 3rem;
-    padding-right: 3rem;
     max-width: 95rem;
     flex-wrap: wrap;
     margin-bottom: 0;
@@ -397,6 +385,19 @@ Articoli
     flex-direction: column;
     border-radius: 1rem;
     color: var(--background-color);
+    transition: all .3s ease, width 0s;
+}
+
+.articolo:hover{
+    scale: 1.05;
+    rotate: 1.5deg;
+    box-shadow: var(--accent-color) .5rem .5rem;
+    z-index: 10;
+}
+
+.articolo:nth-child(even):hover {
+    rotate: -1.5deg;
+    box-shadow: var(--accent-color) -.5rem -.5rem;
 }
 
 .articolo img {
@@ -469,13 +470,11 @@ Recensioni
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
+    transition: all .3s ease;
 }
 
-.recensione,
-.recensione * {
-    backface-visibility: hidden;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: geometricPrecision;
+.recensione:hover{
+    scale: 1.025;
 }
 
 .infoRecensione{
@@ -555,6 +554,15 @@ Animazioni
     Dispoditivi tablet
 */
 @media (min-width: 768px) {
+
+    .flexArticoli{
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+    .containerStoria{
+        margin-left: 3rem;
+        margin-right: 3rem;
+    }
 
     .padding1{
         padding-left: 2rem;
