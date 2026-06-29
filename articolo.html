@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <title>Melis</title>
+        <meta name="description" content="Melis è un e-shop di prodotti per la pelle a base di cera d'api: creme idratanti, balsami labbra, scrub e molto altro. I nostri prodotti sono formulati per nutrire e proteggere la pelle, lasciandola morbida, luminosa e sana. Scegli Melis per una skincare naturale e efficace!">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="../favicon.ico">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/articolo.css">
+    </head>
+    <body>
+        
+        <!-- Navbar -->
+        
+        <div class="topBar" id="navbar">
+            <div class="opzioni">
+                <a href="./index.html">Home</a>
+                <a href="./shop.html">Shop</a>
+                <a href="./aboutus.html">About us</a>
+                <a href="./blog.html">Blog</a>
+                <a href="./recensioni.html">Recensioni</a>
+            </div>
+            <div id="menuIcon">
+                <img src="../resources/iconSet/menu.svg" alt="Menu" class="menuIcon icon">
+            </div>
+
+            <div>
+                <picture class="logo">
+                    <source 
+                        media="(max-width: 600px)"
+                        srcset="./resources/imgs/logo/shortLogo.png" alt="Melis">
+                    <img src="./resources/imgs/logo/fullLogo.png" alt="Melis" class="logo">
+                </picture>
+            </div>
+            
+            <div class="alignEnd">
+                <img src="resources/iconSet/shop.svg" alt="Negozio" class="icon"  id="apriCarrello">
+            </div>
+        </div>
+        <div class="sfondoNeroShop" id="sfondoNeroShop"></div>
+        <div class="mobileDevicesBar" id="mobileNav">
+            <div class="mobileNavHeader">
+                <img src="./resources/imgs/logo/fullLogo.png">
+                <button id="navCLose">+</button>
+            </div>
+            <div class="containerLink" id="links"> 
+                <a href="./index.html">
+                    Home
+                </a>
+                <a href="./shop.html">
+                    Shop
+                </a>
+                <a href="./aboutus.html">
+                    La nostra storia
+                </a>
+                <a href="./blog.html">
+                    Blog dell'alveare
+                </a>
+                <a href="./recensioni.html">
+                    Recensioni
+                </a>
+            </div>
+            <div class="coda">
+                @ 2026 Melis
+            </div>
+        </div>
+        <!-- ShopBar -->
+        <div class="sfondoNero" id="sfondoNero"></div>
+        <div class="shopBar" id="shopBar">
+            <div class="mobileNavHeader">
+                <div id="headerBar">
+                    Nome prodotto
+                </div>
+                <button id="shopClose" onclick="closeShop()">+</button>
+            </div>
+            <div class="productPreview" id="productPreview">
+                <img src="./resources/imgs/generali/Apicoltore.jpg" class="productImagePreview" id="previewImage">
+                <p class="prodDescription" id="prodDesc">Protezione e comfort in un gesto semplice. Uno stick pratico e naturale che aiuta a mantenere le labbra morbide e protette dagli agenti esterni.</p>
+                <p class="ingChiave">Ingredienti chiave</p>
+                <ul class="listaIngredienti" id="listaIng">
+                </ul>
+                <button class="buyProduct" id="pulsanteAcquista"><p>Acquista</p></button>
+            </div>
+            <div class="carrello" id="carrello">
+
+            </div>
+        </div>
+        
+        <!-- Contenuto Pagina -->
+        <div class="pattern alignCenter">
+            <div class="foto_articoloPrincipale toFade">
+                <img src="./resources/imgs/articoli/art1.jpg" id="immagineArticolo">
+            </div>
+        </div>
+        <div class="ContenitoreArticolo alignCenter">
+            <div class="box_articolo">
+                    <h1 id="titoloArticolo" class="toFade delay1">La bellezza della pelle nasce dal benessere delle api</h1>
+                    <p id="contenutoArticolo" class="toFade delay2">
+                        Quando parliamo di cura della pelle, spesso ci concentriamo sugli ingredienti e sui benefici che apportano al nostro benessere quotidiano. Ma dietro alcuni dei doni più preziosi della natura, come il miele, esiste un ecosistema delicato che merita la nostra attenzione: quello delle api.
+                        Le api svolgono un ruolo fondamentale nella biodiversità del pianeta. Grazie alla loro attività di impollinazione contribuiscono alla salute di numerose specie vegetali e al mantenimento degli equilibri naturali. Proteggere le api significa quindi proteggere la ricchezza e la varietà della natura che ci circonda.
+                        Il miele, utilizzato da secoli nella tradizione cosmetica, è apprezzato per le sue proprietà nutrienti, emollienti e protettive. È un ingrediente capace di prendersi cura della pelle in modo delicato, aiutandola a mantenere morbidezza, idratazione e luminosità.
+                        Per questo crediamo che la vera bellezza debba andare di pari passo con il rispetto dell'ambiente. Scegliere prodotti realizzati con ingredienti provenienti da un'apicoltura responsabile significa sostenere pratiche che valorizzano il territorio, tutelano gli impollinatori e contribuiscono alla conservazione della biodiversità.
+                        Prendersi cura della propria pelle è un gesto quotidiano di benessere. Farlo con consapevolezza, rispettando il lavoro delle api e gli equilibri della natura, è un piccolo contributo verso un futuro più sostenibile per tutti.
+                    </p>
+            </div>
+            <!--Greca-->
+            <div class="divider">
+                <div class="line"></div>
+                <img src="./resources/imgs/logo/logo_verde.svg" alt="logo-greca" class="ornament">
+                <div class="line"></div>
+            </div>
+        </div>
+
+        <!--Footer-->
+
+        <div class="footer">
+            <div class="contanitoreFolds">
+                <div class="fold toFade">
+                    <div class="containerTitoloFold">
+                        <h1 class="titolo">
+                            Community
+                        </h1>
+                        <button class="pusanteFold">
+                            +
+                        </button>
+                    </div>
+
+                    <div class="contenutoFold">
+                        <a href="./recensioni.html">
+                            Risultati concreti
+                        </a>
+                        <a href="./blog.html">
+                            Consigli dall’alveare
+                        </a>
+                    </div>
+                </div>
+                <div class="fold toFade delay1">
+                    <div class="containerTitoloFold">
+                        <h1 class="titolo">
+                            Contatti
+                        </h1>
+                        <button class="pusanteFold">
+                            +
+                        </button>
+                    </div>
+
+                    <div class="contenutoFold">
+                        <p>
+                            Via delle api, 6 20345
+                        </p>
+                        <p>
+                            Mielandia (ML)
+                        </p>
+                    </div>
+                </div>
+                <div class="fold toFade delay2">
+                    <div class="containerTitoloFold">
+                        <h1 class="titolo">
+                            Credits
+                        </h1>
+                        <button class="pusanteFold">
+                            +
+                        </button>
+                    </div>
+
+                    <div class="contenutoFold">
+                        <a href="./credits.html">
+                            Risorse utilizzare
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="containerSocial toFade">
+                <a href="https://www.facebook.com" target="_blank">
+                    <img src="./resources/iconSet/Facebook.svg">
+                </a>
+                <a href="https://www.instagram.com" target="_blank">
+                    <img src="./resources/iconSet/Instagram.svg">
+                </a>
+                <a href="https://www.linkedin.com" target="_blank">
+                    <img src="./resources/iconSet/Linkedin.svg">
+                </a>
+            </div>
+            <div class="alignCenterText toFade miniText">
+                @ 2026 Melis
+            </div>
+        </div>
+
+
+        <script src="./script.js"></script>
+        <script src="./data/articoli.js"></script>
+        <script src="./js/articolo.js"></script> 
+    </body>
+</html>

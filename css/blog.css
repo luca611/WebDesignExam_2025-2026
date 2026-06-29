@@ -1,0 +1,122 @@
+.titoloPagina {
+    font-family: 'Fiona', Arial, Helvetica, sans-serif;
+    text-align: justify;
+    padding: 1em 1em;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    color: var(--background-color);
+    background-color: var(--text-color);
+    width: 100%;
+}
+
+.containerBlogs{
+    width: calc(100% - 4rem);
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    max-width: 95rem;
+    justify-content: center;
+}
+
+.articolo{
+    width: 100%;
+    border-radius: 1rem;
+    border: solid .1rem;
+    background-color: var(--background-color);
+    margin-bottom: 2rem;
+}
+
+.articolo img{
+    object-fit: cover;
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 1rem 1rem 0 0;
+    margin-bottom: .5rem;
+}
+
+.articolo div{
+    width: 100%;
+    padding: 1rem;
+    color: var(--text-color);
+}
+
+.articolo h1{
+    font-size: 1.3rem;
+    font-family: 'Fiona', Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+.articolo p{
+    font-size: 1rem;
+    line-height: 1.3rem;
+    display: block;
+    max-height: calc(1.3rem * 4);
+    overflow: hidden;
+}
+
+.articolo a{
+    background-color: var(--accent-color);
+    padding: .5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border: none;
+    border-radius: 50rem;
+    color: var(--text-color);
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.articolo a::before{
+    content: '';
+    background-color: var(--text-color);
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50rem;
+    transition: all .3s ease;
+}
+
+.articolo a p{
+    margin: 0;
+    display: inline;
+}
+
+.articolo a:hover p{
+    filter: brightness(9) hue-rotate(20deg);
+}
+
+.articolo a:hover::before{
+    width: 100%;
+}
+
+
+/* Tablet */
+@media (min-width: 768px) {
+    .containerBlogs{
+        width: calc(100% - 6rem);
+        margin-left: 3rem;
+        margin-top: 3rem;
+        margin-right: 3rem;
+        flex-direction: row;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .articolo{
+        width: calc(50% - 1rem);
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .articolo{
+        width: calc(25% - 1.5rem);
+    }
+}

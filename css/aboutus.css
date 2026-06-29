@@ -1,0 +1,213 @@
+/* -----------------
+Stile pagina about us 
+-------------------*/
+
+
+.box_aboutus{
+    width: calc(100% - 4rem);
+    margin-left: 2rem;
+    margin-right: 2rem;
+    padding-top: 2rem;
+    max-width: 95rem;
+    transition: padding .3s ease;
+}
+
+.titoloPagina {
+    font-family: 'Fiona', Arial, Helvetica, sans-serif;
+    text-align: justify;
+    padding: 1em 1em;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    color: var(--background-color);
+    background-color: var(--text-color);
+}
+
+.foto_aboutus {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+    transition: all .3s ease;
+}
+
+.secondTitle{
+    font-family: 'Fiona', Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+    margin: 0;
+    margin-top: 1rem;
+}
+
+.fullWidth{
+    width: 100%;
+}
+
+.foto_aboutus img{
+    width: 100%;
+    border-radius: 1rem;
+    display: flex;
+    object-fit: cover;
+    transition: all .3s ease;
+}
+
+.box_aboutus h1 {
+    font-family: 'Fiona', Arial, Helvetica, sans-serif;
+    text-align: left;
+    padding-top: .5rem;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: left;
+}
+
+.box_aboutus p {
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 1rem;
+    justify-content: center;
+    line-height: 1.6;
+    margin: 0;
+    margin-bottom: 2rem;
+}
+
+.foto_collage {
+    position: relative;
+}
+
+.foto_collage img {
+    width: 100%;
+    display: flex;
+    object-fit: cover;
+    margin-top: 2rem;
+    margin-bottom: 0;
+    z-index: 1;
+
+}
+
+.foto_collage h1 {
+    font-family: 'Fiona', Arial, Helvetica, sans-serif;
+    position: absolute;
+    left: 50%;
+    bottom: 13%;
+    transform: translateX(-50%);
+    font-size: 530%;
+    z-index: 2;
+}
+
+/* Lista dei valori del brand */
+
+.sfondo_valori {
+    width: 100%;
+    position: relative;
+    padding: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    background-color: var(--text-color);
+    color: var(--text-color);
+}
+
+.sfondo_valori::before{
+    top: 0;
+}
+
+.paddingValori{
+    padding:2rem;
+}
+
+.box_valori {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 3rem;
+    background-color: var(--background-color);
+    border: .1rem solid var(--text-color);
+    border-radius: 1rem;
+    max-width: 95rem;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.box_valori h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+}
+
+.pulsanteFold {
+    flex: 0 0 50px;
+}
+
+.box_valori img{
+    border-radius: 1rem 1rem 0 0;
+    max-height: 50rem;
+    object-fit: cover;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+
+    .paddingValori {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .box_aboutus{
+        width: calc(100% - 6rem);
+        margin-left: 3rem;
+        margin-right: 3rem;
+    }
+
+    .foto_collage h1 {
+        font-family: 'Fiona', Arial, Helvetica, sans-serif;
+        position: absolute;
+        left: 50%;
+        bottom: 13%;
+        transform: translateX(-50%);
+        font-size: 150%;
+        z-index: 2;
+    }
+
+    .sfondo_valori {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    .box_valori{
+        flex-direction: row-reverse;
+        padding-bottom: 0;
+        min-height: 60vh;
+    }
+
+    .box_valori img{
+        width: 50%;
+        border-radius: 0 1rem 1rem 0;
+    }
+
+    .box_valori img {
+        max-height: none;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+
+    .foto_collage h1 {
+        font-family: 'Fiona', Arial, Helvetica, sans-serif;
+        position: absolute;
+        left: 50%;
+        bottom: 12%;
+        transform: translateX(-50%);
+        font-size: 200%;
+        z-index: 2;
+    }
+
+    .foto_collage h1 {
+        font-family: 'Fiona', Arial, Helvetica, sans-serif;
+        position: absolute;
+        left: 50%;
+        bottom: 13%;
+        transform: translateX(-50%);
+        font-size: 320%;
+        z-index: 2;
+    }
+}

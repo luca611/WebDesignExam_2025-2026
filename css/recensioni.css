@@ -98,7 +98,7 @@ Recensioni
     border-radius: 1rem;
     background: var(--background-color);
     width: 100%;
-    transition: all .3s ease;
+    transition: scale .3s ease;
 }
 
 .review-card:hover{
@@ -181,6 +181,16 @@ Recensioni
 
     .review-card {
         width: calc(50% - 1rem);
+    }
+
+    .sezione_recensioni {
+        padding-right: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .prima_dopo {
+        padding-left: 3rem;
+        padding-right: 3rem;
     }
 }
 
