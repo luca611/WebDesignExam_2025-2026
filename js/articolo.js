@@ -8,7 +8,6 @@ function create(elemento){
     return document.createElement(elemento);
 }
 
-riempiArticolo()
 
 function riempiArticolo(){
     let paginaDaAprire= localStorage.getItem("paginaDaAprire");
@@ -20,3 +19,7 @@ function riempiArticolo(){
     ebi("titoloArticolo").innerText = contenuto.titolo;
     ebi("contenutoArticolo").innerText = contenuto.descrizione;
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    riempiArticolo()
+});

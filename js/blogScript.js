@@ -11,7 +11,7 @@ function create(elemento){
 // variabile globale usata per memorizzare l'id dell'articolo da aprire
 var daAprire = null;
 
-caricaBlog();
+
 
 function caricaBlog(){
     const container = ebi("contenitoreBlogs");
@@ -56,3 +56,7 @@ function caricaBlog(){
         container.appendChild(art);
     });
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    caricaBlog();
+});
